@@ -1,0 +1,528 @@
+PYTHON TYPE CASTING / TYPE CONVERSION
+=====================================
+
+1. WHAT IS TYPE CASTING?
+------------------------
+Converting a value from one data type to another is called type conversion.
+
+Type conversion is commonly explained in two categories:
+1. Implicit Type Conversion
+2. Explicit Type Conversion
+
+
+2. IMPLICIT TYPE CONVERSION
+---------------------------
+Python automatically uses compatible types during certain operations.
+
+Example:
+    a = 10
+    b = 2.5
+    result = a + b
+
+    print(result)        # 12.5
+    print(type(result))  # <class 'float'>
+    print(type(a))       # <class 'int'>
+
+Python performs the operation using a compatible numeric type. The original
+variable a remains an int.
+
+Common numeric promotion:
+    int + float       -> float result
+    int/float + complex -> complex result
+
+IMPORTANT:
+- Do not say that implicit conversion never loses data. Some operations can
+  lose precision or information.
+- Python does not automatically convert every pair of types. For example,
+  10 + "20" raises TypeError.
+- bool is a subclass of int, so True behaves like 1 and False like 0 in
+  arithmetic. This is a special relationship, not the same example as
+  int-to-float promotion.
+
+
+3. EXPLICIT TYPE CONVERSION
+---------------------------
+The programmer requests conversion using a function such as int(), float(),
+str(), bool(), complex(), list(), tuple(), set(), or dict().
+
+Example:
+    value = "100"
+    number = int(value)
+
+    print(number)        # 100
+    print(type(value))   # <class 'str'>
+    print(type(number))  # <class 'int'>
+
+The original value is not changed automatically. Here, value is still a str;
+number refers to the converted int.
+
+
+4. NUMBER BASES
+---------------
+Binary:
+    Prefix: 0b or 0B
+    Digits: 0 and 1
+    Example: 0b1010  # decimal value 10
+
+Octal:
+    Prefix: 0o or 0O
+    Digits: 0 through 7
+    Example: 0o12    # decimal value 10
+
+Hexadecimal:
+    Prefix: 0x or 0X
+    Digits: 0 through 9 and a through f (case-insensitive)
+    Example: 0xA     # decimal value 10
+
+NOTE:
+- 0c / 0C is NOT Python's octal prefix.
+- These prefixes are used in Python integer literals.
+- Conversion helpers include bin(10), oct(10), and hex(10), which return
+  strings such as '0b1010', '0o12', and '0xa'.
+- int("1010", 2) converts the string "1010" from base 2 to integer 10.
+- int("12", 8) converts the string "12" from base 8 to integer 10.
+- int("A", 16) converts the string "A" from base 16 to integer 10.
+
+
+5. input() FUNCTION
+-------------------
+input() is a built-in function used to receive text entered by the user.
+It always returns a str, even when the user enters digits.
+
+Example:
+    age = input("Enter your age: ")
+    print(age)
+    print(type(age))  # <class 'str'>
+
+To perform arithmetic, convert the input when appropriate:
+    age = int(input("Enter your age: "))
+    print(age + 1)
+
+If the user enters text that cannot be converted, int() or float() may raise
+ValueError. Real applications should validate input and handle such errors.
+
+
+6. int() CONVERSION
+-------------------
+int(x) converts a compatible value to an integer.
+
+Common supported cases:
+- int -> int: int(12)       gives 12
+- float -> int: int(12.9)   gives 12 (truncates toward zero)
+- bool -> int: int(True)    gives 1; int(False) gives 0
+- numeric integer string -> int: int("25") gives 25
+- bytes containing integer text -> int: int(b"25") gives 25
+- compatible number in a specified base:
+      int("101", 2) gives 5
+
+Common failures / limits:
+- int("25.5") raises ValueError. It is a decimal string, not an integer string.
+  A two-step conversion works but truncates: int(float("25.5")) gives 25.
+- int("hello") raises ValueError.
+- int(2 + 3j) raises TypeError; complex values cannot be directly converted
+  to int because the imaginary part would need a policy.
+- int([1]), int((1,)), int({1}), int({"a": 1}) raise TypeError.
+- int(None) raises TypeError.
+
+Important:
+int(float_value) truncates toward zero; it does not round:
+    int(9.99)   -> 9
+    int(-9.99)  -> -9
+
+
+7. float() CONVERSION
+---------------------
+float(x) converts a compatible value to a floating-point number.
+
+Common supported cases:
+- int -> float: float(10) gives 10.0
+- float -> float: float(2.5) gives 2.5
+- bool -> float: float(True) gives 1.0
+- numeric string -> float: float("12.5") gives 12.5
+- integer string -> float: float("12") gives 12.0
+- compatible bytes text -> float: float(b"2.5") gives 2.5
+
+Common failures / limits:
+- float("hello") raises ValueError.
+- float(2 + 3j) raises TypeError.
+- float([1]), float((1,)), float({1}), float({"a": 1}) raise TypeError.
+- float(None) raises TypeError.
+
+A float is a binary floating-point value, so it may not represent every decimal
+fraction exactly. For exact financial decimal calculations, consider
+decimal.Decimal.
+
+
+8. complex() CONVERSION
+-----------------------
+complex(x) converts a compatible numeric value or numeric string to a complex
+number. A complex number has a real part and an imaginary part.
+
+Examples:
+    complex(5)          # (5+0j)
+    complex(2.5)        # (2.5+0j)
+    complex(True)       # (1+0j)
+    complex("2+3j")     # (2+3j)
+    complex("4")        # (4+0j)
+
+Common failures / limits:
+- complex("hello") raises ValueError.
+- complex([1]), complex((1,)), complex({1}), complex({"a": 1}) raise TypeError.
+- complex(None) raises TypeError.
+
+Note:
+- A complex value cannot be converted directly to int or float:
+      int(2 + 3j)    # TypeError
+      float(2 + 3j) # TypeError
+- complex(2, 3) creates 2+3j. Both arguments must be compatible real numeric
+  values; the second argument cannot itself be complex.
+
+
+9. str() CONVERSION
+-------------------
+str(x) returns a string representation of a value.
+
+Examples:
+    str(25)             # '25'
+    str(2.5)            # '2.5'
+    str(True)           # 'True'
+    str(None)           # 'None'
+    str([1, 2])         # '[1, 2]'
+    str((1, 2))         # '(1, 2)'
+    str({1, 2})         # '{1, 2}'
+    str({"name": "Ravi"}) # "{'name': 'Ravi'}"
+
+Important corrections:
+- str() can convert numbers, booleans, lists, tuples, sets, dictionaries, and
+  None into strings. It generally does not raise a conversion error for these
+  ordinary built-in values.
+- str("") is an empty string: ''
+- str(" ") is a string containing one space: ' '
+  These are NOT the same. The second is not empty.
+- str() creates a textual representation; it does not necessarily create a
+  string that can be converted back into the original object with a simple
+  int(), float(), or other constructor.
+
+
+10. bool() CONVERSION
+---------------------
+bool(x) converts a value to True or False according to its truth value.
+
+Common falsy values:
+    bool(False)  -> False
+    bool(0)      -> False
+    bool(0.0)    -> False
+    bool(0j)     -> False
+    bool("")     -> False
+    bool([])     -> False
+    bool(())     -> False
+    bool(set())  -> False
+    bool({})     -> False
+    bool(None)   -> False
+
+Common truthy values:
+    bool(True)       -> True
+    bool(1)          -> True
+    bool(-1)         -> True
+    bool(" ")        -> True
+    bool("False")    -> True
+    bool([0])        -> True
+    bool((0,))       -> True
+    bool({0})        -> True
+    bool({"a": 0})   -> True
+
+Important:
+- bool() normally does not raise an error for these built-in values.
+- Empty collections are falsy; non-empty collections are truthy.
+- bool("False") is True because the string is non-empty. Python does not
+  interpret the word "False" as the Boolean value False.
+
+
+11. list() CONVERSION
+---------------------
+list(iterable) creates a list from an iterable.
+
+Examples:
+    list("cat")          -> ['c', 'a', 't']
+    list((1, 2, 3))      -> [1, 2, 3]
+    list({1, 2, 3})      -> a list of the set's elements
+    list({"a": 1, "b": 2}) -> ['a', 'b'] (dictionary keys)
+    list(range(3))       -> [0, 1, 2]
+    list(b"ABC")         -> [65, 66, 67]
+
+Important:
+- list(dictionary) returns its keys, not key-value pairs.
+- list(set_value) has no guaranteed order because sets are unordered.
+- list(123), list(2.5), list(True), list(2+3j), and list(None) raise TypeError
+  because these values are not iterable.
+
+
+12. tuple() CONVERSION
+----------------------
+tuple(iterable) creates a tuple from an iterable.
+
+Examples:
+    tuple([1, 2, 3])       -> (1, 2, 3)
+    tuple("cat")           -> ('c', 'a', 't')
+    tuple({"a": 1, "b": 2}) -> ('a', 'b') (dictionary keys)
+    tuple(range(3))        -> (0, 1, 2)
+
+Common failures:
+- tuple(123), tuple(2.5), tuple(True), tuple(2+3j), and tuple(None) raise
+  TypeError because these values are not iterable.
+
+Single-element tuple:
+    a = (10,)   # tuple containing one item
+    b = (10)    # just the integer 10, NOT a tuple
+
+The comma makes it a tuple; parentheses alone do not.
+
+
+13. set() CONVERSION
+--------------------
+set(iterable) creates a set of unique, hashable elements.
+
+Examples:
+    set([1, 1, 2, 3])       -> {1, 2, 3}
+    set((1, 2, 2, 3))       -> {1, 2, 3}
+    set("hello")             -> a set of unique characters
+    set({"a": 1, "b": 2})   -> {'a', 'b'} (dictionary keys)
+    set()                    -> an empty set
+
+Important:
+- Sets remove duplicates and do not guarantee display order.
+- set({}) creates an empty set because {} is an empty dictionary.
+- {} itself creates an empty dictionary, not an empty set.
+- set(123), set(2.5), set(True), set(2+3j), and set(None) raise TypeError
+  because these values are not iterable.
+- Elements placed in a set must be hashable. For example, set([[1], [2]])
+  raises TypeError because lists are unhashable.
+
+
+14. dict() CONVERSION
+---------------------
+dict() creates a dictionary from key-value pairs or keyword arguments.
+
+Examples:
+    dict([("name", "Ravi"), ("age", 20)])
+        -> {'name': 'Ravi', 'age': 20}
+
+    dict((("a", 1), ("b", 2)))
+        -> {'a': 1, 'b': 2}
+
+    dict(name="Ravi", age=20)
+        -> {'name': 'Ravi', 'age': 20}
+
+Important:
+- A dictionary needs suitable key-value pairs, each usually a pair of length 2.
+- dict([("a", 1), ("b", 2)]) works.
+- dict(["ab", "cd"]) works and produces {'a': 'b', 'c': 'd'}.
+- dict([1, 2]) raises TypeError because each item is not a key-value pair.
+- dict("abc") raises ValueError because the elements do not form valid
+  key-value pairs.
+- dict(123), dict(2.5), dict(True), dict(2+3j), and dict(None) raise TypeError.
+- Dictionary keys must be hashable.
+- If duplicate keys occur, the last value for that key is kept.
+
+
+15. BYTES AND BYTEARRAY (ADDITIONAL)
+------------------------------------
+bytes() and bytearray() are also built-in conversion/creation functions.
+
+Examples:
+    bytes([65, 66, 67])       -> b'ABC'
+    bytearray([65, 66, 67])   -> bytearray(b'ABC')
+    "hello".encode("utf-8")   -> b'hello'
+    b'hello'.decode("utf-8")  -> 'hello'
+
+Important:
+- bytes("hello") raises TypeError unless an encoding is supplied:
+      "hello".encode("utf-8")
+      bytes("hello", "utf-8")
+- bytes(3) creates three zero bytes: b'\x00\x00\x00'. It does not convert
+  the text "3" into bytes.
+- bytearray is mutable; bytes is immutable.
+
+
+16. QUICK CONVERSION COMPATIBILITY SUMMARY
+------------------------------------------
+This is a practical summary for common built-in types. Actual success can
+depend on the value and, for iterables, on their contents.
+
+Target int():
+- Commonly works: int, float, bool, integer-form str, suitable bytes.
+- Fails: complex, list, tuple, set, dict, None.
+- Strings must contain a valid integer representation (or use a base).
+
+int(list) fails but int(str(list works))
+a = 123
+
+print(list(str(a)))   # ['1', '2', '3']
+print(tuple(str(a)))  # ('1', '2', '3')
+print(set(str(a)))   # {'1', '2', '3'}
+Target float():
+- Commonly works: int, float, bool, numeric str, suitable bytes.
+- Fails: complex, list, tuple, set, dict, None.
+- Strings must contain valid floating-point text.
+
+Target complex():
+- Commonly works: int, float, bool, complex, valid numeric str.
+- Fails: list, tuple, set, dict, None.
+- Strings must contain valid complex-number text.
+
+Target str():
+- Works for ordinary built-in values, including int, float, bool, complex,
+  list, tuple, set, dict, bytes, and None.
+- Produces a string representation; it does not preserve the original type.
+
+Target bool():
+- Works for ordinary built-in values.
+- Returns False for falsy values and True for truthy values.
+
+Target list() / tuple() / set():
+- Require an iterable.
+- Common iterable sources: str, list, tuple, set, dict, range, bytes.
+- int, float, bool, complex, and None are not iterable and normally raise
+  TypeError.
+- set() additionally requires each resulting element to be hashable.
+
+Target dict():
+- Requires a mapping or an iterable of suitable key-value pairs, or keyword
+  arguments.
+- A normal list/tuple of pairs can work; a string or number usually does not.
+- Success depends on the shape of the data and hashable keys.
+
+
+17. COMMON ERRORS
+-----------------
+ValueError:
+The type may be convertible in principle, but the provided value is invalid.
+Examples:
+    int("hello")    # ValueError
+    float("hello")  # ValueError
+    int("2.5")      # ValueError
+
+TypeError:
+The operation or conversion does not support the supplied type.
+Examples:
+    int(2 + 3j)     # TypeError
+    list(123)       # TypeError
+    dict(123)       # TypeError
+
+ZeroDivisionError:
+A numeric conversion may succeed, but a later calculation can fail:
+    total = 100 / int("0")  # ZeroDivisionError
+
+
+18. IMPORTANT TEACHING NOTES
+----------------------------
+1. Do not classify conversion only by source type. The actual value matters:
+       int("25")     works
+       int("hello")  fails
+2. Conversion does not always preserve information:
+       int(8.9)      -> 8
+       set([1, 1, 2]) -> {1, 2}
+3. Conversion is not the same as validation. Validate user input and handle
+   ValueError / TypeError in real applications.
+4. input() always returns str.
+5. int() truncates floats toward zero; it does not round.
+6. bool("False") is True; bool("") is False.
+7. list(dict_value), tuple(dict_value), and set(dict_value) operate on the
+   dictionary's keys.
+8. A one-item tuple requires a comma: (5,).
+9. {} is an empty dictionary; set() is an empty set.
+10. Numeric conversion from str does not accept every string that looks
+    meaningful to a human.
+
+
+19. PRACTICE QUESTIONS
+----------------------
+Predict the output or error before running each line:
+
+1. print(int(7.99))
+2. print(int(-7.99))
+3. print(float("25"))
+4. print(int("25.5"))
+5. print(bool("False"))
+6. print(bool(" "))
+7. print(str([1, 2]))
+8. print(list({"name": "Ravi", "age": 20}))
+9. print(tuple("Python"))
+10. print(set([1, 1, 2, 3]))
+11. print(dict([("a", 1), ("b", 2)]))
+12. print(int(2 + 3j))
+13. print(list(100))
+14. print(int("101", 2))
+15. print(hex(255))
+
+1. Direct conversion compatibility
+Assume these source values:
+- int: 10
+- float: 10.5
+- complex: 2 + 3j
+- str: "25" (or "hello" where relevant)
+- bool: True
+- list: [1, 2]
+- tuple: (1, 2)
+- set: {1, 2}
+- dict: {"a": 1}
+- NoneType: None
+Source type	int()	float()	complex()	str()	bool()
+int	Yes	Yes	Yes	Yes	Yes
+float	Yes*	Yes	Yes	Yes	Yes
+complex	No	No	Yes	Yes	Yes
+str	Conditional	Conditional	Conditional	Yes	Yes
+bool	Yes	Yes	Yes	Yes	Yes
+list	No	No	No	Yes	Yes
+tuple	No	No	No	Yes	Yes
+set	No	No	No	Yes	Yes
+dict	No	No	No	Yes	Yes
+NoneType	No	No	No	Yes	Yes
+
+Source type	list()	tuple()	set()	dict()
+int	No	No	No	No
+float	No	No	No	No
+complex	No	No	No	No
+str	Yes	Yes	Yes	Conditional
+bool	No	No	No	No
+list	Yes	Yes	Conditional*	Conditional
+tuple	Yes	Yes	Conditional*	Conditional
+set	Yes	Yes	Yes	Conditional
+dict	Yes**	Yes**	Conditional*	Yes
+NoneType	No	No	No	No
+
+Notes
+- Conditional string conversion to dict(): the iterable must contain suitable key-value pairs. For example, dict(["ab", "cd"]) works.
+- Conditional set conversion: set() requires hashable elements. A list containing another list cannot be converted into a set.
+- Conditional list/tuple to set: all elements must be hashable.
+- Conditional list/tuple/set to dict: the elements must be valid key-value pairs, and their keys must be hashable.
+- Dictionary to list/tuple: converts the dictionary's keys, not its values or key-value pairs.
+- float() and int() conversions from strings depend on the string's contents. int("25") works, but int("25.5") raises ValueError.
+Yes* for int(float_value) means the fractional part is truncated toward zero.
+2. Indirect conversion: examples
+Indirect conversion is possible when you convert a value through an intermediate type. However, not every indirect conversion is meaningful or successful.
+Conversion	Example	Result
+int → str → list	list(str(123))	['1', '2', '3']
+int → str → tuple	tuple(str(123))	('1', '2', '3')
+int → str → set	set(str(123))	Set of digit characters
+float → int → str	str(int(12.8))	'12'
+str → float → int	int(float("12.8"))	12
+bool → int → str	str(int(True))	'1'
+complex → str	str(2+3j)	'(2+3j)'
+
+What about converting an integer indirectly into a dictionary?
+number = 10# Direct conversion fails# dict(number)  # TypeError# We can create a dictionary using the number as a keyresult = {str(number): "value"}print(result)# {'10': 'value'}
+
+
+
+This creates a dictionary using the integer's string representation as a key. It is not a direct conversion of the integer into a dictionary.
+3. The final rule for your notes
+- Direct conversion: depends on the target constructor and the source value.
+- Indirect conversion: may be possible through an intermediate type, but the result can change the original meaning or lose information.
+- int(), float(), and complex(): numeric conversions have specific rules; complex numbers cannot be directly converted to int or float.
+- str() and bool(): work with ordinary built-in values, including collections and None.
+- list(), tuple(), and set(): generally require an iterable.
+- dict(): requires a mapping or suitable key-value pairs.
+
+END OF NOTES
+============
