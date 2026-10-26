@@ -1,0 +1,689 @@
+DAY 5: PYTHON OPERATORS
+
+============================================================
+
+1. REAL-WORLD PROBLEM
+
+Imagine you are developing a shopping application. A customer buys two products, gets a discount, and needs to pay the final amount. How will your Python program calculate the bill and decide whether the customer qualifies for free delivery?
+
+product_price = 500
+quantity = 2
+discount = 100
+delivery_charge = 50
+
+total = product_price * quantity
+final_amount = total - discount + delivery_charge
+
+print("Total:", total)
+print("Final amount:", final_amount)
+
+Output:
+Total: 1000
+Final amount: 950
+
+Note:
+This example demonstrates arithmetic operators. We can also use comparison and logical operators to decide whether the customer qualifies for free delivery.
+
+============================================================
+
+2. OPERATORS IN PYTHON
+
+What is an operator?
+
+WHAT:
+An operator is a symbol or keyword that performs an operation on one or more operands.
+
+WHY:
+Operators allow us to perform calculations, compare values, evaluate conditions, assign values, and manipulate data.
+
+WHERE:
+- Billing systems
+- Login validation
+- E-commerce applications
+- APIs and data processing
+- Games
+- Database filtering
+- Automation
+
+HOW:
+We use operators in expressions.
+
+Example:
+
+a = 10
+b = 20
+result = a + b
+
+print(result)
+
+Output: 30
+
+Here:
+a and b = operands
++ = operator
+a + b = expression
+30 = result
+
+Important:
+Operators are not operands. Operands are the values or objects on which operators perform operations.
+
+============================================================
+
+3. TYPES OF OPERATORS IN PYTHON
+
+1. Arithmetic operators
+2. Comparison (relational) operators
+3. Logical operators
+4. Assignment operators
+5. Membership operators
+6. Identity operators
+7. Conditional expression (ternary operator)
+8. Bitwise operators
+
+============================================================
+
+4. ARITHMETIC OPERATORS
+
+Arithmetic operators are used to perform mathematical calculations.
+
+Operators:
++   Addition
+-   Subtraction
+*   Multiplication
+/   True division
+//  Floor division
+%   Modulus (remainder)
+**  Exponentiation
+
+Examples:
+
+print(10 + 3)   # 13
+print(10 - 3)   # 7
+print(10 * 3)   # 30
+print(10 / 3)   # 3.3333333333333335
+print(10 // 3)  # 3
+print(10 % 3)   # 1
+print(10 ** 3)  # 1000
+
+IMPORTANT: / vs // vs %
+
+Think of dividing 17 chocolates among 5 children.
+
+17 / 5  = 3.4
+17 // 5 = 3
+17 % 5  = 2
+
+/  : True division; returns the division result.
+// : Floor division; returns the floor of the quotient.
+%  : Returns the remainder.
+
+Developer use cases:
+
+%  : Check whether a number is even or odd.
+     Example: number % 2 == 0
+
+// : Calculate the number of complete groups.
+
+ / : Calculate averages, rates, and ratios.
+
+Example:
+
+number = 18
+print(number % 2 == 0)  # True
+
+total_items = 17
+group_size = 5
+
+print(total_items // group_size)  # 3 complete groups
+print(total_items % group_size)   # 2 items left over
+
+IMPORTANT: FLOOR DIVISION WITH NEGATIVE NUMBERS
+
+Floor division rounds toward negative infinity, not toward zero.
+
+print(-7 // 2)  # -4
+print(-7 % 2)   # 1
+
+Exponentiation:
+
+print(2 ** 3)  # 8
+
+Exponentiation groups from right to left.
+
+print(2 ** 3 ** 2)  # 512
+
+Python evaluates it as:
+
+2 ** (3 ** 2)
+2 ** 9
+512
+
+Note: Exponentiation and unary operators have a special interaction.
+
+print(-2 ** 2)    # -4
+print((-2) ** 2)  # 4
+print(2 ** -2)    # 0.25
+
+============================================================
+
+5. OPERATORS WITH STRINGS AND COLLECTIONS
+
+NOTE 1: STRINGS AND NUMBERS
+
+Python does not automatically convert a string to a number for arithmetic addition.
+
+print("10" + 5)  # TypeError
+
+However, strings can be concatenated with other strings.
+
+print("Hello " + "Python")  # Hello Python
+
+A string can be repeated using an integer.
+
+print("Hi " * 3)  # Hi Hi Hi
+
+String repetition with a float is not allowed.
+
+print("Hi " * 2.5)  # TypeError
+
+If a number needs to be combined with text, convert it to a string.
+
+age = 25
+print("Age: " + str(age))  # Age: 25
+
+NOTE 2: LISTS, TUPLES, SETS AND DICTIONARIES
+
+Lists:
+The + operator concatenates lists.
+The * operator repeats a list when multiplied by an integer.
+
+print([1, 2] + [3, 4])  # [1, 2, 3, 4]
+print([1, 2] * 2)       # [1, 2, 1, 2]
+
+Tuples:
+The + operator concatenates tuples.
+The * operator repeats tuples when multiplied by an integer.
+
+print((1, 2) + (3, 4))  # (1, 2, 3, 4)
+print((1, 2) * 2)      # (1, 2, 1, 2)
+
+Sets:
+The + and * operators are not supported for ordinary set concatenation or repetition.
+
+Use | for set union.
+
+print({1, 2} | {2, 3})  # {1, 2, 3}
+
+Dictionaries:
+The + operator does not merge dictionaries.
+
+In Python 3.9 and later, the | operator can merge dictionaries.
+
+first = {"name": "Ravi"}
+second = {"course": "Python"}
+
+print(first | second)
+# {'name': 'Ravi', 'course': 'Python'}
+
+============================================================
+
+6. COMPARISON / RELATIONAL OPERATORS
+
+Comparison operators compare two values and generally return True or False.
+
+Operators:
+
+==  Equal to
+!=  Not equal to
+<   Less than
+>   Greater than
+<=  Less than or equal to
+>=  Greater than or equal to
+
+Examples:
+
+print(10 == 10)  # True
+print(10 != 5)   # True
+print(10 > 5)    # True
+print(10 < 5)    # False
+print(10 >= 10)  # True
+print(10 <= 10)  # True
+
+IMPORTANT: == vs is
+
+== checks value equality.
+
+is checks object identity: whether two references point to the same object.
+
+first = [10, 20]
+second = [10, 20]
+third = first
+
+print(first == second)  # True
+print(first is second)  # False
+print(first is third)   # True
+
+Use "is None" when checking whether a value is None.
+
+result = None
+
+print(result is None)  # True
+
+============================================================
+
+7. LOGICAL OPERATORS
+
+Logical operators combine conditions or reverse their truthiness.
+
+Python operators:
+
+and  Logical AND
+or   Logical OR
+not  Logical NOT
+
+IMPORTANT: JavaScript vs Python
+
+JavaScript:
+&&  AND
+||  OR
+!   NOT
+
+Python:
+and
+or
+not
+
+Examples:
+
+print(True and False)  # False
+print(True or False)   # True
+print(not True)        # False
+
+AND:
+Both conditions must be truthy for the result to be truthy.
+
+OR:
+At least one condition must be truthy for the result to be truthy.
+
+NOT:
+Reverses the truthiness of a value.
+
+Real-world example:
+
+attendance = 80
+fee_paid = True
+
+eligible = attendance >= 75 and fee_paid
+
+print(eligible)  # True
+
+Short-circuit evaluation:
+
+Python may skip evaluating the second operand of and or or when the first operand determines the result.
+
+username = ""
+
+result = username and username[0]
+
+print(result)  # Empty string
+
+Python does not evaluate username[0] because username is falsy.
+
+Important:
+and and or can return an operand itself, not necessarily True or False.
+
+print(0 or 25)         # 25
+print("Python" and 5)  # 5
+
+============================================================
+
+8. MEMBERSHIP OPERATORS
+
+Membership operators check whether an item exists in a collection or sequence.
+
+Operators:
+
+in
+not in
+
+Supported examples include strings, lists, tuples, sets and dictionaries.
+
+courses = ["Python", "HTML", "CSS", "JavaScript"]
+
+print("Python" in courses)     # True
+print("Java" not in courses)   # True
+
+String example:
+
+print("Py" in "Python")  # True
+
+Dictionary example:
+
+student = {
+    "name": "Ravi",
+    "course": "Python"
+}
+
+print("name" in student)  # True
+print("Ravi" in student)  # False
+
+IMPORTANT:
+When using in with a dictionary, Python checks its keys by default, not its values.
+
+To check dictionary values:
+
+print("Ravi" in student.values())  # True
+
+============================================================
+
+9. IDENTITY OPERATORS
+
+Identity operators check whether two references point to the same object.
+
+Operators:
+
+is
+is not
+
+Example:
+
+list1 = [10, 20]
+list2 = [10, 20]
+list3 = list1
+
+print(list1 is list2)      # False
+print(list1 is list3)      # True
+print(list1 is not list2)  # True
+
+Important:
+Identity is not the same as equality.
+
+== compares values.
+is compares object identity.
+
+The id() function returns an object's identity value during its lifetime. Do not use id() to determine whether two objects have equal contents.
+
+============================================================
+
+10. CONDITIONAL EXPRESSION (TERNARY OPERATOR)
+
+Python supports a conditional expression, commonly called the ternary operator.
+
+WHAT:
+It selects one of two expressions based on a condition.
+
+WHY:
+It provides a concise alternative to a simple if-else statement when assigning or producing a value.
+
+SYNTAX:
+
+value_if_true if condition else value_if_false
+
+Example:
+
+age = 20
+
+status = "Adult" if age >= 18 else "Minor"
+
+print(status)  # Adult
+
+Equivalent if-else:
+
+age = 20
+
+if age >= 18:
+    status = "Adult"
+else:
+    status = "Minor"
+
+print(status)
+
+Important:
+Python does not use JavaScript's condition ? value1 : value2 syntax.
+
+Also, a conditional expression is not the same as a chaining operator.
+
+============================================================
+
+11. ASSIGNMENT OPERATORS
+
+Assignment operators assign a value to a variable or update its value.
+
+Basic assignment:
+
+x = 10
+
+Augmented assignment operators:
+
++=
+-=
+*=
+/=
+//=
+%=
+**=
+&=
+|=
+^=
+>>=
+<<=
+@=
+
+Examples:
+
+count = 5
+
+count += 1
+print(count)  # 6
+
+count -= 1
+print(count)  # 5
+
+count *= 2
+print(count)  # 10
+
+count //= 3
+print(count)  # 3
+
+Important:
+Python does not have JavaScript-style increment and decrement operators ++ and --.
+
+Use:
+
+count += 1  # Increment by one
+count -= 1  # Decrement by one
+
+These are augmented assignment operations, not unary operators.
+
+============================================================
+
+12. BITWISE OPERATORS
+
+Bitwise operators operate on the binary representation of integers.
+
+Operators:
+
+&   Bitwise AND
+|   Bitwise OR
+^   Bitwise XOR
+~   Bitwise NOT
+<<  Left shift
+>>  Right shift
+
+Example:
+
+a = 5  # Binary: 0101
+b = 3  # Binary: 0011
+
+print(a & b)  # 1
+print(a | b)  # 7
+print(a ^ b)  # 6
+print(~a)     # -6
+print(a << 1) # 10
+print(a >> 1) # 2
+
+IMPORTANT:
+^ means bitwise XOR, not bitwise NOT.
+~ means bitwise NOT.
+
+Bitwise operators are useful in bit flags, binary protocols and low-level programming.
+
+============================================================
+
+13. UNARY OPERATORS
+
+WHAT:
+A unary operator operates on a single operand.
+
+WHY:
+It can change a value's sign, reverse truthiness, or perform bitwise operations on a single operand.
+
+Examples:
+
++   Unary plus
+-   Unary minus
+not Logical NOT
+~   Bitwise NOT
+
+x = 10
+
+print(+x)       # 10
+print(-x)       # -10
+print(not True) # False
+print(~5)       # -6
+
+Important:
+Unary minus does not decrement a variable.
+
+x = 10
+
+print(-x)  # -10
+print(x)   # 10
+
+Python does not support ++ and -- as increment/decrement operators.
+
+print(++x)  # 10; two unary plus operations
+print(--x)  # 10; two unary minus operations
+
+However, x++ is invalid Python syntax.
+
+Use += 1 and -= 1 to increment or decrement a variable.
+
+============================================================
+
+14. OPERATOR PRECEDENCE
+
+WHAT:
+Operator precedence determines which operators are grouped or evaluated first in an expression.
+
+WHY:
+It ensures expressions are interpreted consistently and allows us to write correct calculations and conditions.
+
+WHERE:
+- Mathematical calculations
+- Discount and tax calculations
+- Eligibility conditions
+- Logical expressions
+- Data processing
+
+HOW:
+Python follows precedence rules. Parentheses can make the intended grouping explicit.
+
+EXAMPLE:
+
+result = 10 + 5 * 2
+
+print(result)  # 20
+
+Multiplication is performed before addition.
+
+Another example:
+
+result = (10 + 5) * 2
+
+print(result)  # 30
+
+Parentheses change the grouping.
+
+OPERATOR PRECEDENCE: HIGHER TO LOWER
+
+1. Primary expressions: function calls, indexing, attribute access
+2. Exponentiation: **
+3. Unary operators: +x, -x, ~x
+4. Multiplication, division, floor division, modulus, matrix multiplication:
+   *, /, //, %, @
+5. Addition and subtraction: +, -
+6. Bit shifts: <<, >>
+7. Bitwise AND: &
+8. Bitwise XOR: ^
+9. Bitwise OR: |
+10. Comparisons, membership and identity:
+    <, <=, >, >=, ==, !=, in, not in, is, is not
+11. Logical NOT: not
+12. Logical AND: and
+13. Logical OR: or
+14. Conditional expression: if ... else
+15. Lambda expression: lambda
+16. Assignment expression: :=
+
+IMPORTANT RULES:
+
+Rule 1:
+Parentheses control grouping.
+
+Rule 2:
+Exponentiation groups from right to left.
+
+print(2 ** 3 ** 2)  # 512
+
+Equivalent to:
+
+print(2 ** (3 ** 2))
+
+Rule 3:
+Operators at the same precedence level generally group from left to right, with exceptions such as exponentiation and comparison chaining.
+
+print(20 / 5 * 2)  # 8.0
+
+Rule 4:
+Exponentiation interacts specially with unary operators.
+
+print(-2 ** 2)    # -4
+print((-2) ** 2)  # 4
+
+Rule 5:
+Comparison operators have higher precedence than not, and not has higher precedence than and, which has higher precedence than or.
+
+print(not 10 > 5)  # False
+
+print(True or False and False)  # True
+
+Rule 6:
+Use parentheses to make complex expressions easier to understand.
+
+============================================================
+
+15. PRACTICE QUESTIONS
+
+1. What is the output of 17 % 5?
+2. What is the output of 2 ** 3 ** 2?
+3. What is the difference between == and is?
+4. What is the output of True or False and False?
+5. What does 17 // 5 return?
+6. What is the output of -2 ** 2?
+7. Why does "Age: " + 25 raise a TypeError?
+8. Why does ++x not increment x in Python?
+9. What does in check when used with a dictionary?
+10. Explain the difference between precedence and short-circuit evaluation.
+
+============================================================
+
+TRAINER'S NOTE
+
+Teach arithmetic, comparison, logical and assignment operators first. Then explain membership and identity, followed by conditional expressions, unary operators, bitwise operators and precedence.
+
+For each category, explain WHAT, WHY, WHERE and HOW. Demonstrate the code, ask students to predict the output, execute it, and discuss common mistakes.
+
+Reference:
+Official Python documentation:
+https://docs.python.org/3/reference/expressions.html#operator-precedence

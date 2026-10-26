@@ -1,0 +1,304 @@
+Day: Intro To python
+
+What is programming lanaguage?
+Types of it
+what is Comiple,Interpreter,Transpiler and hybrid
+what is python, python is used in,
+------------------------------------------------------------------------
+programming Langauge: 
+
+Language - acts like a media to communicate between 2 person/2 sources in order to exchange the though/feelings..
+
+In similar way when we want to communicate with our sytsem like lappy/com/amything it needs a lanuage but system understand only 0,1's called as lowlevel lanagues/Machine level language..
+
+but humans will understand only english, that can be used as python,java,php,dotnet(etc)called as high level lanaguage
+
+
+so when we write the code in these high level langauge and that has to be converetd into machine level lanaguge using compiler/interpreter/hybrid
+
+So now let see what is a complier and Interpreter
+Complier- When the source code(.py,.js,or with any. extenstion) is executed then some high level langauge first compile the code that means translates the code into machine level lanaguage and then exeutes..
+examples- java
+
+Interpreter- Wwhen the source code (.py,.js or java) code ie exectued then it does both translations and execting the code line by line instead of first translating and then execting..
+
+-----------------------------------------------------------------------------------------
+Complier vs Interpreter
+
+so complier error free code, if it find errors it stops the translation so there will be no exection at all
+But once the complie code is ready we need to use the complier help agai
+interpreter it whever the code is error free till there it will be exectued..but here we need interpreter verey time so that the translatio and excetion will runs parallely..
+
+
+every lanaguage has built in compliers and interpreters
+------------------------------------------------------------------------------
+
+Client-side code runs on the user's device.
+
+Example:
+JavaScript running in a web browser can respond to button clicks, validate
+some form fields, and update the page without requesting a new page from
+the server.
+
+B. SERVER-SIDE
+--------------
+
+Server-side code runs on a server and commonly handles requests, applies
+business rules, interacts with databases, and sends responses to clients.
+
+Example:
+Python code using Django, Flask, or FastAPI can run on a server to process
+a user's login request.
+
+Simple website example:
+
+1. The user opens a website in a browser.
+2. The browser sends a request to the server.
+3. The server-side application processes the request.
+4. The server sends a response.
+5. The browser displays the response and runs any relevant client-side code.
+
+Important:
+- Running code in a terminal does not automatically make it server-side.
+- Python can run locally on a laptop or on a remote server.
+- JavaScript can run in a browser and also on a server using Node.js.
+- A browser can display HTML and CSS while JavaScript handles client-side
+  behavior.
+  -------------------------------------------------------------------------
+What is Python??
+
+
+
+Python is a high-level, general-purpose programming language known for its
+readable syntax and broad range of applications.
+
+---------------------------------------------------------------------------
+
+Fetaures of python
+1. High-Level Language
+   Python provides abstractions that make code easier for humans to read
+   and write.
+
+2. Readable Syntax
+   Python syntax is designed to be relatively clear and readable.
+
+3. General-Purpose Language
+   Python can be used in many different application areas.
+
+4. Dynamically Typed
+   Python determines and checks types at runtime. Variable names do not
+   require fixed type declarations in the way they commonly do in Java.
+
+   Example:
+
+   num = 10
+   num = "Hello"
+
+   Here, the name num first refers to an integer object and later refers to
+   a string object.
+
+   More accurately, objects have types and names refer to objects.
+
+5. Indentation-Based Blocks
+   Python uses indentation to define blocks of code.
+
+   Example:
+
+   if 10 > 5:
+       print("10 is greater than 5")
+
+   The indented statement belongs to the if block.
+
+   Python does not automatically insert indentation for every new block.
+   Programmers must indent their code correctly. Four spaces per indentation
+   level is the standard convention.
+
+6. Cross-Platform
+   Python is available on operating systems such as Windows, macOS, and Linux.
+
+   Many Python programs can run on different operating systems if a compatible
+   Python implementation and the required dependencies are available.
+
+7. Multi-Paradigm
+   Python supports procedural, object-oriented, and functional programming
+   styles.
+
+8. Large Standard Library and Ecosystem
+   Python provides many built-in modules and has a large ecosystem of
+   third-party packages.
+
+9. Automatic Memory Management
+   Python implementations manage memory for objects. Programmers usually do
+   not manually allocate and free memory in the way they often do in C.
+
+10. Scripting : Scripting Language
+
+What is Scripting?
+
+Scripting is the process of writing small or large programs to automate tasks,
+control applications, process data, or connect different software components.
+
+A scripting language is a programming language commonly used to write these
+scripts.
+
+Python is commonly used as a scripting language because it has readable
+syntax, a large standard library, and supports rapid development.
+
+Why do we need scripting?
+
+Imagine that every day we need to:
+
+Rename 100 files.
+
+Read data from multiple text files.
+
+Generate reports automatically.
+
+Send automated notifications.
+
+Check whether a particular file exists.
+
+Perform repetitive tasks on a computer.
+
+Instead of performing these tasks manually every day, we can write a Python
+script to automate them.
+------------------------------------------------------------------------------------
+
+Dynamically types-A dynamically typed language determines and checks type-related behavior
+during program execution.
+
+Example in Python:
+
+value = 100
+value = "Python"
+
+The same name can refer to objects of different types at different times.
+
+Comparison with Java:
+
+Java:
+int value = 100;
+
+in java we need tp use like num a = 10 but in python we can directly give it as  =10 when we run the program at the exection time the datatype is allocted..
+-------------------------------------------------------------------------------
+Platform Indepent:
+
+in python .py is first complied with the complier to .pyc which is called as byte code and then this bytecode again converetd into machine code by python virtual machine(interepretter)..hence python is complier and interpretter that means hybrid..
+
+Now the complied code/source  (.pyc) can be taken and run under any os like linus,mac,widnow thus this is called platform independent..
+
+
+Python has default indenation means by default it create a tab space or 2 space bar when it want a new block { }
+
+----------------------------------------------------------------------------------------
+
+ Python was created by Guido van Rossum.
+- Work on Python began in the late 1980s, and it was first released in 1991.
+- The name Python was inspired by the British comedy series
+  "Monty Python's Flying Circus."
+- Python has continued to evolve through new releases and improvements.
+the current version of python in 3.13
+
+Official downloads:
+https://www.python.org/downloads/
+
+Official documentation:
+https://docs.python.org/3/
+
+
+Python is genral puprose lanauge
+Genreal Purpose langauge is a language that can be used in developemnt,testing,atomation,etc...
+ WHERE IS PYTHON USED?
+------------------------------------------------------------------------------------
+
+1. Web Development
+   Frameworks and tools: Django, Flask, FastAPI.
+
+2. Data Analysis and Data Science
+   Libraries: pandas, NumPy.
+
+3. Data Visualization
+   Libraries: Matplotlib, Plotly.
+
+4. Artificial Intelligence and Machine Learning
+   Libraries and tools: scikit-learn, TensorFlow, PyTorch, and model APIs.
+
+5. Generative AI and Agentic AI
+   Python can connect to model APIs, call tools, process data, and build
+   applications that use agents and workflows.
+
+6. Automation and Scripting
+   Examples: renaming files, processing reports, automating repetitive tasks.
+
+7. Software Testing
+   Tools: pytest, Selenium, Playwright.
+
+8. Scientific Computing
+   Libraries: NumPy, SciPy.
+
+9. Desktop Applications
+   Tools: Tkinter, PySide.
+
+10. Games and Simulations
+    Tool: Pygame and other suitable libraries.
+
+11. Backend Services and APIs
+    Python can process requests, implement business logic, and communicate
+    with databases and other services.
+---------------------------------------------------------------------------
+
+
+
+Flavors of pythons
+
+RubyPython
+Python
+Cpython
+IronPython,...
+
+
+PROGRAMMING PARADIGMS SUPPORTED BY PYTHON
+--------------------------------------------
+
+A programming paradigm is a style or approach to organizing and writing code.
+
+A. Procedural Programming
+   A program is organized around procedures and step-by-step instructions.
+
+   Example:
+   A function that calculates the total marks of a student.
+
+B. Functional Programming
+   Emphasizes functions, expressions, and reducing unintended side effects.
+
+   Example:
+   Using functions such as map() and filter(), or writing pure functions.
+
+C. Object-Oriented Programming (OOP)
+   Organizes code around objects that combine data and behavior.
+
+   Example:
+   A Student class with student details and methods.
+
+D. Modular Programming
+   Organizes code into separate, reusable modules.
+
+   Example:
+   Keeping calculation functions in calculations.py and importing them into
+   another Python file.
+
+Important:
+Python supports multiple programming styles. Modular programming is mainly
+an approach to organizing code rather than a separate core programming
+paradigm.
+------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+

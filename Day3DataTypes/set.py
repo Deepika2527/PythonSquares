@@ -1,0 +1,3 @@
+s = {1,2,3,4,5,6,8,2,'hello'}
+print(s)
+print(type(s))

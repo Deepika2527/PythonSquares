@@ -1,0 +1,36 @@
+Data Types in Python
+
+A data type in python refers to a type od the data that the varaible is holding
+
+Varaible: a varaible acts like an contaier who hold different values
+and now datatype refers to the type of the data the varaible holds,
+it can be a string,float,complex,int,booelan(t or f),list,tuple,set,dict,map
+
+
+These are classified into 
+primitive
+sequence and
+non-sequence
+
+primitv- 
+which holds a single value(scalar value)
+immutable
+
+int
+float
+complex
+booelan
+
+sequence datatype:
+which can be retrievd through indexes,can be mutable
+
+list - [], duplicates
+string -'', "",''' '''
+dict- {key:value,key:value} 
+in deic keys can be anything except list/set as the are hashable
+tuple- (),heterogenous,no duplicates,immutable
+
+no sequence data type
+set- {},no dupliactes,mutable(thorugh methods)
+
+

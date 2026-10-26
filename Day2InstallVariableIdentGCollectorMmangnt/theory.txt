@@ -1,0 +1,561 @@
+DAY 2: PYTHON IDENTIFIERS, VARIABLES, MEMORY MANAGEMENT AND GARBAGE COLLECTION
+
+Today's Teaching Agenda
+
+1. Ways to install Python
+2. What is an identifier?
+3. Variables and object references
+4. Rules for identifiers
+5. Reserved keywords
+6. Memory management in Python
+7. Size of variables and objects
+8. Garbage collection
+9. Practical demonstrations and assignments
+
+--------------------------------------------------------------------------------
+
+1. WAYS TO INSTALL PYTHON
+
+What is Python installation?
+
+Installing Python means setting up the Python interpreter and related tools so that we can execute Python programs on a computer.
+
+WHY do we install Python?
+
+- To execute Python source code.
+- To develop applications and automation scripts.
+- To install third-party libraries.
+- To develop backend applications.
+- To perform data analysis and build AI applications.
+
+Ways to install or use Python:
+
+1. Download Python from the official website:
+   https://www.python.org/downloads/
+
+2. Use an IDE or code editor such as VS Code or PyCharm to write and execute Python programs.
+
+3. Use a Python distribution such as Anaconda to manage Python, packages and environments.
+
+4. Use online Python interpreters or notebook environments without installing Python locally.
+
+NOTE:
+Python is the programming language and interpreter.
+VS Code and PyCharm are tools used to write and manage Python code.
+
+--------------------------------------------------------------------------------
+
+2. WHAT IS AN IDENTIFIER?
+
+An identifier is a name used to identify a programming entity, such as a variable, function, class or module.
+
+Example:
+
+a = 10
+
+Here, a is an identifier used as a variable name.
+
+def test():
+    print("Hello")
+
+Here, test is an identifier used as a function name.
+
+class Student:
+    pass
+
+Here, Student is an identifier used as a class name.
+
+WHY DO WE USE IDENTIFIERS?
+
+Identifiers help us give meaningful names to programming entities so that we can access and use them in our programs.
+
+Example:
+
+student_name = "XYZ"
+student_age = 10
+
+Here, student_name and student_age are meaningful identifiers.
+
+--------------------------------------------------------------------------------
+
+3. WHAT IS A VARIABLE?
+
+A variable is a name that refers to an object.
+
+For beginners, we can compare a variable to a labelled container. However, internally, Python variables work through name-to-object references rather than acting exactly like fixed storage boxes.
+
+Example:
+
+student_name = "XYZ"
+age = 10
+role = "developer"
+
+Here:
+
+student_name, age and role are variable names.
+
+"XYZ", 10 and "developer" are values represented by Python objects.
+
+We can check the type of an object using the type() function.
+
+Example:
+
+student_name = "XYZ"
+age = 10
+salary = 45000.50
+is_trainer = True
+
+print(type(student_name))
+print(type(age))
+print(type(salary))
+print(type(is_trainer))
+
+Output:
+
+<class 'str'>
+<class 'int'>
+<class 'float'>
+<class 'bool'>
+
+WHY DO WE USE VARIABLES?
+
+- To refer to data.
+- To reuse data in a program.
+- To perform calculations.
+- To store references to objects.
+- To make programs dynamic and maintainable.
+
+Example:
+
+price = 1000
+quantity = 3
+
+total = price * quantity
+
+print(total)
+
+Output:
+
+3000
+
+--------------------------------------------------------------------------------
+
+4. RULES FOR IDENTIFIERS / VARIABLE NAMES
+
+Rule 1:
+An identifier can start with a letter or an underscore.
+
+Valid:
+name = "Ravi"
+_name = "Ravi"
+
+Invalid:
+1name = "Ravi"
+
+Rule 2:
+An identifier can contain letters, digits and underscores.
+
+Valid:
+student1 = "Ravi"
+student_age = 20
+
+Invalid:
+student-age = 20
+
+Rule 3:
+Spaces are not allowed in identifiers.
+
+Invalid:
+student name = "Ravi"
+
+Valid:
+student_name = "Ravi"
+
+Rule 4:
+Hyphens and other unsupported special characters cannot be used in identifiers.
+
+Invalid:
+total-marks = 100
+student@name = "Ravi"
+
+Rule 5:
+Python keywords cannot be used as ordinary identifiers.
+
+Invalid:
+class = "Python"
+
+Valid:
+class_name = "Python"
+
+Rule 6:
+Python identifiers are case-sensitive.
+
+Example:
+
+name = "Ravi"
+Name = "Kiran"
+
+print(name)
+print(Name)
+
+Output:
+
+Ravi
+Kiran
+
+NOTE:
+name and Name are two different identifiers.
+
+BEST PRACTICE:
+
+Use meaningful names.
+
+Use snake_case for variables and functions.
+
+Examples:
+
+student_name
+total_marks
+calculate_salary()
+
+--------------------------------------------------------------------------------
+
+5. RESERVED KEYWORDS
+
+WHAT ARE RESERVED KEYWORDS?
+
+Reserved keywords are words that have predefined syntactic meaning in Python. They cannot be used as ordinary identifiers.
+
+Examples:
+
+if
+else
+for
+while
+class
+def
+return
+import
+try
+except
+True
+False
+None
+
+Example:
+
+class = "Python"
+
+This produces a SyntaxError because class is a reserved keyword.
+
+Correct approach:
+
+class_name = "Python"
+
+HOW TO DISPLAY PYTHON KEYWORDS?
+
+Example:
+
+import keyword
+
+print(keyword.kwlist)
+
+The keyword module provides information about Python's reserved keywords.
+
+To check whether a word is a keyword:
+
+import keyword
+
+print(keyword.iskeyword("class"))
+print(keyword.iskeyword("student"))
+
+Output:
+
+True
+False
+
+--------------------------------------------------------------------------------
+
+6. MEMORY MANAGEMENT IN PYTHON
+
+WHAT IS MEMORY MANAGEMENT?
+
+Memory management is the process of allocating, using and reclaiming memory required by a program.
+
+WHY IS MEMORY MANAGEMENT REQUIRED?
+
+When we execute a program, Python objects require memory.
+
+Examples:
+
+- Integers
+- Strings
+- Lists
+- Dictionaries
+- Functions
+- Objects created using classes
+
+Python manages memory automatically in many common situations, reducing the need for programmers to manually allocate and free object memory.
+
+HOW DOES PYTHON MANAGE MEMORY?
+
+1. Python creates objects when needed.
+2. Names and other objects can refer to those objects.
+3. Python tracks references and object reachability.
+4. Objects that are no longer needed can be reclaimed.
+5. Python's memory allocator manages memory used by the interpreter.
+
+NOTE:
+Memory management and garbage collection are related, but they are not exactly the same.
+
+Memory management is the broader process.
+
+Garbage collection is one mechanism involved in reclaiming memory.
+
+--------------------------------------------------------------------------------
+
+7. ID() FUNCTION — OBJECT IDENTITY
+
+WHAT IS id()?
+
+The id() function returns the identity of an object during its lifetime.
+
+Example:
+
+a = 10
+name = "Python"
+
+print(id(a))
+print(id(name))
+
+The output contains integer identity values.
+
+ANALOGY:
+
+id() is like an identity number assigned to an object.
+
+However, in CPython, an object's identity is commonly associated with its memory address. Python does not guarantee that id() always returns a physical memory address.
+
+IMPORTANT:
+id() does not tell us how much memory an object occupies.
+
+It identifies the object; it does not measure its size.
+
+--------------------------------------------------------------------------------
+
+8. SIZE OF OBJECTS — SYS.GETSIZEOF()
+
+WHAT DOES OBJECT SIZE MEAN?
+
+Different Python objects can require different amounts of memory.
+
+To check an object's size, we can use sys.getsizeof().
+
+Example:
+
+import sys
+
+a = 10
+name = "Python"
+numbers = [10, 20, 30]
+
+print(sys.getsizeof(a))
+print(sys.getsizeof(name))
+print(sys.getsizeof(numbers))
+
+The output reports the size of each object in bytes.
+
+ANALOGY:
+
+id() = Object identity, like an identity number.
+
+sys.getsizeof() = Approximate size of the object itself, measured in bytes.
+
+IMPORTANT:
+
+1. id() and sys.getsizeof() serve different purposes.
+2. Object sizes depend on the Python implementation, version and platform.
+3. sys.getsizeof() does not recursively count all objects referenced by a list or dictionary.
+4. A variable name itself does not have a fixed size determined by the value assigned to it.
+
+CORRECT SYNTAX:
+
+sys.getsizeof(variable)
+
+INCORRECT SYNTAX:
+
+sys.sizeOf(variable)
+
+Python is case-sensitive, so getsizeof must be written exactly as shown.
+
+--------------------------------------------------------------------------------
+
+9. GARBAGE COLLECTION
+
+WHAT IS GARBAGE COLLECTION?
+
+Garbage collection is a process used to reclaim memory occupied by objects that are no longer needed.
+
+HOW DOES PYTHON HANDLE IT?
+
+In CPython, Python primarily uses reference counting, along with a cyclic garbage collector.
+
+REFERENCE COUNTING:
+
+Python tracks references to objects.
+
+When an object's reference count reaches zero, CPython can generally deallocate that object immediately.
+
+Example:
+
+a = [10, 20, 30]
+b = a
+
+del a
+
+print(b)
+
+Output:
+
+[10, 20, 30]
+
+Explanation:
+
+Both a and b initially refer to the same list object.
+
+When we delete a, the name a is removed.
+
+The object still exists because b refers to it.
+
+Therefore, del does not always destroy an object.
+
+CYCLIC GARBAGE COLLECTION:
+
+Sometimes objects refer to one another in a cycle, even when the cycle is no longer reachable from the rest of the program.
+
+The cyclic garbage collector can identify and reclaim certain such objects.
+
+Example:
+
+import gc
+
+print(gc.isenabled())
+
+collected = gc.collect()
+
+print("Objects collected:", collected)
+
+The gc module provides functions for working with Python's cyclic garbage collector.
+
+NOTE:
+gc.collect() requests a collection pass. It does not mean that every unused object in memory will necessarily be collected by that call.
+
+--------------------------------------------------------------------------------
+
+10. PRACTICAL DEMONSTRATIONS
+
+DEMO 1: IDENTIFIERS
+
+student_name = "Ravi"
+student_age = 18
+
+print(student_name)
+print(student_age)
+
+DEMO 2: CHECKING DATA TYPES
+
+a = 100
+b = "Python"
+c = 10.5
+d = True
+
+print(type(a))
+print(type(b))
+print(type(c))
+print(type(d))
+
+DEMO 3: OBJECT REFERENCES
+
+a = [10, 20, 30]
+b = a
+
+print(a is b)
+
+b.append(40)
+
+print(a)
+print(b)
+
+Explanation:
+
+Both names refer to the same list object. Modifying the list through b also affects what we see through a.
+
+DEMO 4: OBJECT IDENTITY
+
+a = 100
+b = a
+
+print(id(a))
+print(id(b))
+print(a is b)
+
+DEMO 5: OBJECT SIZE
+
+import sys
+
+number = 100
+text = "Hello Python"
+items = [1, 2, 3]
+
+print(sys.getsizeof(number))
+print(sys.getsizeof(text))
+print(sys.getsizeof(items))
+
+DEMO 6: GARBAGE COLLECTION
+
+import gc
+
+print("Garbage collection enabled:", gc.isenabled())
+
+collected = gc.collect()
+
+print("Objects collected:", collected)
+
+--------------------------------------------------------------------------------
+
+11. ASSIGNMENTS
+
+BASIC LEVEL:
+
+1. Create five variables using different data types.
+2. Print the type of each variable.
+3. Write five valid and five invalid identifiers.
+4. Display Python's reserved keywords using the keyword module.
+
+INTERMEDIATE LEVEL:
+
+1. Create two names referring to the same list. Modify the list using one name and observe the result using the other.
+2. Display the identity of three different objects using id().
+3. Compare the sizes of an integer, a string and a list using sys.getsizeof().
+4. Explain why del does not always destroy an object.
+
+ADVANCED LEVEL:
+
+1. Explain the difference between a variable name, an object and an object reference.
+2. Explain the difference between id() and sys.getsizeof().
+3. Explain reference counting and cyclic garbage collection.
+4. Investigate object references using the is operator and the gc module.
+
+--------------------------------------------------------------------------------
+
+DAY 2 — KEY TAKEAWAYS
+
+1. Identifiers are names used for programming entities.
+2. Variables are names that refer to objects in Python.
+3. Identifiers must follow Python's naming rules.
+4. Reserved keywords cannot be used as ordinary identifiers.
+5. Python manages memory automatically in common situations.
+6. id() returns object identity.
+7. sys.getsizeof() reports an object's size in bytes.
+8. CPython uses reference counting and cyclic garbage collection.
+9. del removes a name or reference; it does not necessarily destroy the object immediately.
