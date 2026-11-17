@@ -1,0 +1,48 @@
+text = "lets search 123 for the otp 4161 or 12"
+print(text)
+print(len(text))
+print("find: ",text.find("123"))
+print("find: ",text.find("123"))
+print("find: ",text.find(" "))
+print("find: ",text.find(""))
+print("find: ",text.find("78"))
+print("find: ", text.find("for"))
+print("------------------------------------")
+print("Index: ", text.index("for"))
+# print("Index: ",text.index("78"))
+# This will throw an error i the values if not found but in find the value is not found then -1
+print("Index: ",text.index(" "))
+print("Index: ",text.index(""))
+# 0- There is an empty string before the first character.
+print("-------------------------------------------------------------")
+rept = "Abbaccaacabbaaaac"
+print(rept.count('c'))
+print(rept.count('A'))
+print(rept.count('o'))
+print(rept.count("-1"))
+
+position = text.find("otp")
+
+if position != -1:
+    print("OTP found at:", position)
+else:
+    print("OTP not found")
+
+print("----------------------------------------------------")
+txt = "hello hello hello"
+print(txt.find("hello"))
+print(txt.find("hello",4))
+print(txt.find("hello", 7, 17))
+print(txt.index("hello"))
+print(txt.index("hello",4))
+print(txt.index("hello", 7, 17))
+print("-----------------------------------------------------------------")
+
+ttext = "OTP 123 received. OTP 456 received."
+first = ttext.find("OTP")
+
+second = ttext.find("OTP", first + 1)
+# here first+1 = 0+1 => start pos so the search will start from 1
+
+print(first)
+print(second)

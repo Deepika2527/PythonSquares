@@ -1,0 +1,318 @@
+String-
+In python string is a collection of characters/numbers/cymbols that are wrapped in '' or "" or ''' '''(Triple single quotes ''')
+ex1 - "Hello"
+ex2 - 'hi'
+ex3 - '''hello 
+how are you'''
+
+We can access sring vlaues thorugh indexes.
+We Cant change the value of the string wthat throws an error.As Strings are Immutable
+Negative Indexing is also there
+We can also get the string values by giving our required index valus like [1:9] = [n,n-1]
+does not change the original string.
+
+
+Methods- CSVRRSJFPA- CSV - R2 - SJ- PFA
+
+Case conversion         - lower(),upper(), capitaliztion(), title(), swapcase()
+Searching               - find(), index(), count()
+validation/Checking/    - startswith(), endswith(), isalpha(), isdigit(), isalnum()
+Removing spaces         - ltrim(),rtrim(),trim()
+Replacing               - replace()
+Splitting               - split(), rsplit()
+Joining                 - Join()
+Formatting              - format()
+Partitioning            - partition(), rpartition()
+Alignment               - center(), ljust(), rjust()
+
+-------------------------------------------------------------------------------
+1. Case conversion         -
+ lower()        - "Make EVERYTHING uppercase"
+ upper()        - "Make EVERYTHING lowercase"
+ capitaliztion()- "Make the first character uppercase
+ title()        - "Make Every Word Start With Capital" 
+ swapcase()     - "Reverse upper ↔ lower"
+ casefold()     - "Compare text ignoring case"
+ But casefold() is designed specifically for case-insensitive comparison, especially when dealing with international text.
+-------------------------------------------------------------------------------
+2. Searching & Counting String Methods
+
+find()
+→ Returns the index of the first occurrence.
+→ Returns -1 if the value is not found.
+→ Does not throw an error.
+
+Syntax:
+text.find("value")
+
+
+index()
+→ Returns the index of the first occurrence.
+→ Raises ValueError if the value is not found.
+
+Syntax:
+text.index("value")
+
+
+count()
+→ Returns the number of occurrences.
+→ Returns 0 if the value is not found.
+
+Syntax:
+text.count("value")
+
+
+Optional parameters:
+
+find(value, start)
+find(value, start, end)
+
+index(value, start)
+index(value, start, end)
+
+count(value, start)
+count(value, start, end)
+-----------------------------------------------------------------------------
+3. Validation / Checking
+
+These methods are mainly used to check whether a string satisfies
+a particular condition. Most return True or False.
+
+startswith()
+→ Checks whether the string starts with the specified value.
+
+Syntax:
+text.startswith("value")
+
+
+endswith()
+→ Checks whether the string ends with the specified value.
+
+Syntax:
+text.endswith("value")
+
+
+isalpha()
+→ Returns True if all characters are alphabetic.
+→ Does not accept numbers, spaces or special characters.
+
+Syntax:
+text.isalpha()
+
+
+isdigit()
+→ Returns True if all characters are digit characters.
+→ Some Unicode digit forms are also recognized.
+
+Syntax:
+text.isdigit()
+
+
+isalnum()
+→ Returns True if all characters are alphabetic or numeric.
+→ Does not accept spaces or special characters.
+
+Syntax:
+text.isalnum()
+
+
+isdecimal()
+→ Returns True if all characters are decimal characters.
+→ Does NOT validate decimal numbers such as 12.5.
+
+Syntax:
+text.isdecimal()
+
+
+isnumeric()
+→ Checks for a broader range of Unicode numeric characters.
+→ Can recognize certain fractions, superscripts and other numeric
+  characters.
+→ Does not accept signs (-) or decimal points (.).
+
+Syntax:
+text.isnumeric()
+
+
+isinstance()
+→ NOT a string method.
+→ Built-in Python function used to check the type of an object.
+
+Syntax:
+isinstance(object, type)
+DECIMAL
+  ↓
+only decimal digits
+
+DIGIT
+  ↓
+decimal digits + some digit forms
+  ↓
+NUMERIC
+  ↓
+all of the above + other numeric characters
+Every decimal character is a digit, and every digit is numeric, but not every numeric character is a digit or decimal character.
+--------------------------------------------------------------------------
+4. Removing Leading/Trailing Whitespace
+
+strip()
+→ Removes whitespace from both beginning and end.
+
+lstrip()
+→ Removes whitespace from the beginning/left.
+
+rstrip()
+→ Removes whitespace from the end/right.
+
+Syntax:
+text.strip()
+text.lstrip()
+text.rstrip()
+
+---------------------------------------------------------------------------
+5. Replacing
+
+replace()
+→ Replaces one substring with another.
+→ Returns a new string.
+→ Does not modify the original string because strings are immutable.
+
+Syntax:
+text.replace(old, new)
+
+With count:
+text.replace(old, new, count)
+-----------------------------------------------------------------------
+6. Splitting
+
+split()
+→ Splits a string into multiple parts based on a separator.
+→ Returns a list.
+→ If the separator is not found, it returns the original
+  string as one list element.
+→ If no separator is provided, it splits based on whitespace.
+
+Syntax:
+text.split()
+text.split(separator)
+text.split(separator, maxsplit)
+
+
+Example:
+text = "apple,banana,mango"
+
+text.split(",")
+→ ['apple', 'banana', 'mango']
+
+
+rsplit()
+→ Works similar to split().
+→ When maxsplit is provided, splitting starts from the right side.
+
+Syntax:
+text.rsplit()
+text.rsplit(separator)
+text.rsplit(separator, maxsplit)
+
+
+Example:
+text = "apple,banana,mango,orange"
+
+text.rsplit(",", 2)
+→ ['apple,banana', 'mango', 'orange']
+-----------------------------------------------------------
+Joining                 - Join()
+7. Joining
+
+join()
+→ Used to combine multiple strings into a single string.
+→ A separator is used between the strings.
+→ Returns a new string.
+
+Syntax:
+separator.join(iterable)
+
+Example:
+names = ["Deepika", "Ravi", "Sita"]
+
+result = ", ".join(names)
+
+Output:
+Deepika, Ravi, Sita
+
+Important:
+→ join() expects string elements.
+→ If the iterable contains numbers, convert them to strings first.
+
+split() → String → List
+join()  → List of strings → String
+------------------------------------------------------------------
+Formatting              - format()
+8. Formatting
+
+format()
+→ Used to insert values into a string using placeholders {}.
+→ Returns a new formatted string.
+
+Syntax:
+"....{}....".format(value)
+
+Example:
+name = "Deepika"
+age = 25
+
+print("Name: {}, Age: {}".format(name, age))
+
+------------------------------------------------------------------------------------
+9. Partitioning
+
+partition()
+→ Splits a string into exactly 3 parts using a separator.
+→ Searches for the separator from the left.
+→ Returns a tuple.
+
+Syntax:
+text.partition(separator)
+
+Example:
+"deepika@gmail.com".partition("@")
+
+Output:
+('deepika', '@', 'gmail.com')
+
+
+rpartition()
+→ Similar to partition().
+→ Searches for the separator from the right.
+→ Returns a tuple.
+
+Syntax:
+text.rpartition(separator)
+
+-----------------------------------------------------------------
+10. Alignment
+
+center()
+→ Centers the string within the specified width.
+
+Syntax:
+text.center(width)
+text.center(width, fillchar)
+
+
+ljust()
+→ Left-aligns the string.
+→ Fills the remaining space on the right.
+
+Syntax:
+text.ljust(width)
+text.ljust(width, fillchar)
+
+
+rjust()
+→ Right-aligns the string.
+→ Fills the remaining space on the left.
+
+Syntax:
+text.rjust(width)
+text.rjust(width, fillchar)

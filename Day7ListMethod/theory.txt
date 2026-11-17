@@ -1,0 +1,100 @@
+List- 
+List in Python is denoted with []
+This stores data in heterogeneous form,
+Values can be accessed through indexes
+Duplicates are allowed
+List is ordered
+List is mutable
+Positive and negative indexes will work for accessing the data
+If the index value is out of range then it will give an error
+List can work with +, *(repetition), is, ==, in, not in
+We can modify the values through index values
+
+------------------------------------------------------
+So now lets see the methods
+
+Adding - append(), extend(), insert()
+Deleting - pop(), remove(), clear()
+Searching - index(), count()
+Rearranging - reverse(), sort()
+Copy - copy()
+
+------------------------------------------------------------------------------
+Adding()
+
+append - will add the element at the end of the list
+extend - will help to extend the list by adding elements from another iterable
+insert - insert will insert the element at the specified position/index
+
+We can also add 2 lists using + instead of extend but if we are using + then the original variable will not be affected and a new list will be created.
+
+If we use extend(), the original list/reference variable will be affected.
+
+append() will add the complete element as one element, whereas extend() will add the elements individually.
+
+------------------------------------------------------------------------------
+Deleting-
+
+pop() - Pop will remove the element from the last by default. If we give an index, the element at that index will be removed.
+pop() will also return the removed element.
+
+remove() - Remove will help to remove the first occurrence of the given value.
+remove() works with value, not index.
+
+clear() - Clear will remove all the elements from the list and the list will become an empty list.
+
+--------------------------------------------------------------------------
+Copy-
+
+copy() -
+
+Copy will help to copy the values into a new list object, but the reference/object ID of the outer list will not be the same.
+
+If we do any changes to the original list, the copied list will not be affected when we are changing the outer list elements.
+
+copy() creates a shallow copy.
+
+If we do a = [values] and b = a, then both the reference variables a and b refer to the same object/ID.
+
+Whatever changes we do through a will also be reflected through b because both are referring to the same list object.
+
+b = a is not a deep copy. It is another reference/alias to the same object.
+
+For nested lists, copy() creates a shallow copy, so the inner/nested objects can still have the same reference.
+
+Deep copy can be done using deepcopy() from the copy module, where nested objects are also copied separately.
+
+--------------------------------------------------------------------------------------------------------------
+Searching-
+
+index() - If you give the element/value, it will return the index of the first occurrence of that value.
+Syntax: list.index(value)
+
+count() - It will return the number of times a particular value occurs in the list.
+
+--------------------------------------------------------------------------
+Rearranging-
+
+reverse() - It will reverse the order of the elements in the list.
+It will modify the original list.
+
+sort() - It will arrange the elements in ascending order by default.
+If you want descending order then use reverse=True.
+sort() will modify the original list.
+
+sorted() - It will return a new sorted list without modifying the original list.
+
+---------------------------------------------------------------------------
+If we use direvtly print(reference_ele.method()) it is returning None Why??
+
+Some methods perform an operation on the existing list, but they don't return any value. So their return value is None.
+Example -"append()'s job is to add an element to the list. It does that job directly on the original list. After doing the job, it doesn't return the modified list. Its return value is None."
+append() → modifies the list → returns None
+pop()    → modifies the list → returns removed element
+index()  → doesn't modify → returns index
+count()  → doesn't modify → returns count
+-----------------------------------------------------------------------------------
+
+But why print(l1.extend(l2)) will retun none but if we take l1.extend(l2) and then print(l1) the l1 will be modified
+
+extend() modifies the original list, but it does not return the modified list
